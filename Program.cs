@@ -1,4 +1,7 @@
 
+using ZortouTest.DALs.ExternalServices;
+using ZortouTest.Services;
+
 namespace ZortouTest
 {
     public class Program
@@ -7,19 +10,29 @@ namespace ZortouTest
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
+
+            builder.Services.AddScoped<IAuthService, AuthService>();
+
+            builder.Services.AddHttpClient<IZortApiClient, ZortApiClient>(client =>
+            {
+                var baseUrl = builder.Configuration["ZortApi:BaseUrl"];
+
+                if (string.IsNullOrWhiteSpace(baseUrl))
+                {
+                    throw new InvalidOperationException(
+                        "ZortApi:BaseUrl is missing from appsettings.json.");
+                }
+
+                client.BaseAddress = new Uri(baseUrl);
+                client.Timeout = TimeSpan.FromSeconds(30);
+            });
+
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-            }
+            
 
             app.UseHttpsRedirection();
 
