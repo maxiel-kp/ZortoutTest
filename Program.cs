@@ -4,6 +4,7 @@ using ZortouTest.DALs.ExternalServices;
 using ZortouTest.DALs.Sales;
 using ZortouTest.Data;
 using ZortouTest.Services.Authen;
+using ZortouTest.Services.Costs;
 using ZortouTest.Services.Sales;
 
 namespace ZortouTest
@@ -53,7 +54,7 @@ namespace ZortouTest
 
             builder.Services.AddScoped<ISalesRepository, SalesRepository>();
             builder.Services.AddScoped<ISalesService, SalesService>();
-
+            builder.Services.AddScoped<ICostService, CostService>();
 
             var app = builder.Build();
 
