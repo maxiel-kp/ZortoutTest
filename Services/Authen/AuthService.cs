@@ -2,7 +2,7 @@
 using ZortouTest.DTOs.Authen;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace ZortouTest.Services
+namespace ZortouTest.Services.Authen
 {
     public class AuthService : IAuthService
     {

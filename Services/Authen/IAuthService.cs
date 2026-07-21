@@ -1,7 +1,6 @@
-﻿
-using ZortouTest.DTOs.Authen;
+﻿using ZortouTest.DTOs.Authen;
 
-namespace ZortouTest.Services
+namespace ZortouTest.Services.Authen
 {
     public interface IAuthService
     {

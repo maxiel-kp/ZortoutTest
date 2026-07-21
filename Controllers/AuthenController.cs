@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ZortouTest.DTOs.Authen;
 using ZortouTest.DTOs.Common;
-using ZortouTest.Services;
+using ZortouTest.Services.Authen;
 
 namespace ZortouTest.Controllers
 {
